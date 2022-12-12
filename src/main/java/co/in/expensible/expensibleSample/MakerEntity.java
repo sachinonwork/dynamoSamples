@@ -3,19 +3,25 @@ package co.in.expensible.expensibleSample;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 
-@DynamoDBTable(tableName = "makerDetails")
+@DynamoDBTable(tableName = "lambda-atlas-dev")
+@JsonIgnoreProperties
 class MakerEntity {
 
     private String id;
     private String itemName;
+    
     private Date createdAt;
     private Date updatedAt;
+    @JsonIgnore
     private String contactNumber;
+    @JsonIgnore
     private String contactEmail;
 
-    @DynamoDBHashKey(attributeName="makerId")
+    @DynamoDBHashKey(attributeName = "makerId")
     public String getId() {
         return id;
     }
@@ -24,7 +30,7 @@ class MakerEntity {
         this.id = id;
     }
 
-    @DynamoDBAttribute(attributeName="itemName")
+    @DynamoDBAttribute(attributeName = "itemName")
     public String getItemName() {
         return itemName;
     }
@@ -33,7 +39,7 @@ class MakerEntity {
         this.itemName = itemName;
     }
 
-    @DynamoDBAttribute(attributeName="createdAt")
+    @DynamoDBAttribute(attributeName = "createdAt")
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -42,7 +48,7 @@ class MakerEntity {
         this.createdAt = createdAt;
     }
 
-    @DynamoDBAttribute(attributeName="updatedAt")
+    @DynamoDBAttribute(attributeName = "updatedAt")
     public Date getUpdatedAt() {
         return updatedAt;
     }
@@ -51,7 +57,7 @@ class MakerEntity {
         this.updatedAt = updatedAt;
     }
 
-    @DynamoDBAttribute(attributeName="contactNumer")
+    @DynamoDBAttribute(attributeName = "contactNumer")
     public String getContactNumber() {
         return contactNumber;
     }
@@ -64,7 +70,7 @@ class MakerEntity {
         return contactEmail;
     }
 
-    @DynamoDBAttribute(attributeName="contactEmail")
+    @DynamoDBAttribute(attributeName = "contactEmail")
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
     }
